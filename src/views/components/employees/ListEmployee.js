@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Table, Button, Space ,Input} from "antd";
 import { connect, useDispatch } from "react-redux";
 import { getEmployee, deleteEmployee } from "../../../actions/employee";
@@ -7,21 +7,45 @@ import { DeleteOutlined } from "@ant-design/icons";
 import AddEmployee from "./AddEmployee";
 import UpdateEmployee from "./UpdateEmployee"
 
-const { Search } = Input;
 // View List Employee
 const ListEmployee = (props) => {
   //component didmount
+  const employee = props.lists.employeeList;
+ const [dataSource, setDataSource] = useState(employee);
+ console.log(dataSource,"dataSource");
+ const [value, setValue] = useState("");
   useEffect(() => {
     props.getEmployee();
   }, []);
     const dispatch =useDispatch()
     const onDelete = (id) => { 
-     console.log("id",id);
      if (window.confirm("Bạn có muốn xóa nhân viên này không ?")) {
        dispatch(deleteEmployee(id));
      }
    };
+  
+  //Search 
+  const FilterByNameInput = (
+    <Input
+      placeholder="Search Name"
+      value={value}
+      onChange={(e) => {
+        const currValue = e.target.value;
+        setValue(currValue);
+        const filteredData = employee.filter((entry) =>
+          entry.employeename.includes(currValue)
+        );
+        setDataSource(filteredData);
+      }}
+    />
+  );
+ 
   const columnsTable = [
+    {
+      title: FilterByNameInput,
+      dataIndex: "name",
+      key: "1",
+    },
     {
       title: "ID",
       dataIndex: "_id",
@@ -77,20 +101,19 @@ const ListEmployee = (props) => {
   return (
     <>
       <AddEmployee />
-      <Search
-      style={{margin:"0rem 0 1rem 1rem",width:"60%"}}
+      {/* <Search
+        style={{ margin: "0rem 0 1rem 1rem", width: "60%" }}
         placeholder="input search loading with enterButton"
         enterButton
-      />
+      /> */}
       <Table
         loading={props.lists.loading}
         columns={columnsTable}
-        dataSource={props.lists.employeeList}
+        dataSource={dataSource}
       />
     </>
   );
 };
-
 const mapStateToProps = (state) => {
   return {
     lists: state.employee

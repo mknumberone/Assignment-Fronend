@@ -17,21 +17,21 @@ const UpdateDepartment = (props) => {
     const onSubmitData = (e) => {
         e.preventDefault();
         dispatch(
-          updateDepartment(props.idEdit, namedepartment, officephone, manager)
+            updateDepartment(props.idEdit, namedepartment, officephone, manager)
         );
     };
     useEffect(() => {
         if (props.idEdit) {
-          const dataFake = department.find((x) => x._id === props.idEdit);
-          const dataNew = {
-            namedepartment: dataFake.namedepartment,
-            officephone: dataFake.officephone,
-            manager: dataFake.manager,
-          };
-          setDepartment(dataNew.namedepartment);
-          setOfficephone(dataNew.officephone);
+            const dataFake = department.find((x) => x._id === props.idEdit);
+            const dataNew = {
+                namedepartment: dataFake.namedepartment,
+                officephone: dataFake.officephone,
+                manager: dataFake.manager,
+            };
+            setDepartment(dataNew.namedepartment);
+            setOfficephone(dataNew.officephone);
         }
-    },[]);
+    }, []);
 
     const showModal = () => {
         setIsModalVisible(true);
@@ -53,88 +53,80 @@ const UpdateDepartment = (props) => {
                 onOk={handleCancel}
             >
                 <form onSubmit={onSubmitData}>
-                    <div>
-                        <div>
-                            <div>
-                                <div
-                                    style={{
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                    }}
-                                >
-                                    Name Department*
-                                </div>
-                                <div>
-                                    <input
-                                        style={{
-                                            boxShadow: "none",
-                                            border: "1px solid #95a5a6",
-                                            width: "100%",
-                                        }}
-                                        type="text"
-                                        name="namedepartment"
-                                        className="form-control"
-                                        value={namedepartment}
-                                        onChange={(e) => setDepartment(e.target.value)}
-                                    />
-                                </div>
-                            </div>
-                        </div>
 
+                    <div>
+                        <div
+                            style={{
+                                justifyContent: "center",
+                                alignItems: "center",
+                            }}
+                        >
+                            Name Department*
+                        </div>
                         <div>
-                            <div>
-                                <div
-                                    style={{
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                    }}
-                                >
-                                    Office Phone *
-                                </div>
-                                <div>
-                                    <input
-                                        style={{
-                                            boxShadow: "none",
-                                            border: "1px solid #95a5a6",
-                                            width: "100%",
-                                        }}
-                                        type="text"
-                                        name="jobtitle"
-                                        className="form-control"
-                                        value={officephone}
-                                        onChange={(e) => setOfficephone(e.target.value)}
-                                    />
-                                </div>
-                            </div>
+                            <input
+                                style={{
+                                    boxShadow: "none",
+                                    border: "1px solid #95a5a6",
+                                    width: "100%",
+                                }}
+                                type="text"
+                                name="namedepartment"
+                                className="form-control"
+                                value={namedepartment}
+                                onChange={(e) => setDepartment(e.target.value)}
+                            />
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <div
+                            style={{
+                                justifyContent: "center",
+                                alignItems: "center",
+                            }}
+                        >
+                            Office Phone *
+                        </div>
+                        <div>
+                            <input
+                                style={{
+                                    boxShadow: "none",
+                                    border: "1px solid #95a5a6",
+                                    width: "100%",
+                                }}
+                                type="text"
+                                name="jobtitle"
+                                className="form-control"
+                                value={officephone}
+                                onChange={(e) => setOfficephone(e.target.value)}
+                            />
                         </div>
                     </div>
 
                     <div>
+                        <div
+                            style={{
+                                justifyContent: "center",
+                                alignItems: "center",
+                            }}
+                        >
+                            Manager *
+                        </div>
                         <div>
-                            <div>
-                                <div
-                                    style={{
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                    }}
-                                >
-                                    Manager *
-                                </div>
-                                <div>
-                                    <input
-                                        style={{
-                                            boxShadow: "none",
-                                            border: "1px solid #95a5a6",
-                                            width: "100%",
-                                        }}
-                                        type="text"
-                                        name="manager"
-                                        className="form-control"
-                                        value={manager}
-                                        onChange={(e) => setManager(e.target.value)}
-                                    />
-                                </div>
-                            </div>
+                            <input
+                                style={{
+                                    boxShadow: "none",
+                                    border: "1px solid #95a5a6",
+                                    width: "100%",
+                                }}
+                                type="text"
+                                name="manager"
+                                className="form-control"
+                                value={manager}
+                                onChange={(e) => setManager(e.target.value)}
+                            />
                         </div>
                     </div>
                     <button

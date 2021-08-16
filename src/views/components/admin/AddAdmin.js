@@ -75,14 +75,6 @@ const AddAdmin = ({ addAdmin, addAdminState}) => {
                         </Col>
                         <p>{addAdminState.message}</p>
                     </Row>
-                    {/* <Row >
-                        <Col span={24}>
-                            <Row>
-                                <Col span={5}>State</Col>
-                                <Col span={14}><Input onChange={setStates} value={states === true ? "true" : "false"} disabled/></Col>
-                            </Row>
-                        </Col>
-                    </Row> */}
                     <Button loading={addAdminState.loading} onClick={submit}  type="primary"  style={{ margin: "1rem 0 0 200px" }} >ADD </Button>
                 </Form>
             </Modal>

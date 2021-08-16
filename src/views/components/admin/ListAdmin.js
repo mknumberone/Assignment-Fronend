@@ -3,11 +3,10 @@ import { Table, Button, Space, } from "antd";
 import { connect } from "react-redux";
 import { delAdminID, fetchAdmins, getAdminID} from "../../../actions/admin";
 import {
-    DeleteOutlined, EditOutlined
+    DeleteOutlined, 
 } from "@ant-design/icons";
 import AddAdmin from "./AddAdmin";
-import { useParams } from "react-router-dom";
-import ChangePass from './ChangePass'
+
 
 // View List  admin
 const ListAdmin = (props) => {
@@ -17,7 +16,7 @@ const ListAdmin = (props) => {
         props.delAdminID()
     }, []);
     const onDelete = (id) =>{
-         if (window.confirm("Bạn có muốn xóa nhân viên này không ?")) {
+         if (window.confirm("Bạn có muốn xóa tài khoản này không ?")) {
            props.delAdminID(id);
          }
     }

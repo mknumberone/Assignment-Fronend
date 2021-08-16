@@ -3,24 +3,6 @@ import * as type from "../const/ActionTypes";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-// export const fetchDepartment =(data) => (dispatch)=>{
-//     dispatch({type:type.FETCH_DEPARTMENT})
-//     departmentApi.fetchDepartment(data)
-//     .then((resp)=>{
-//         console.log("resp",resp);
-//         dispatch({
-//             type: type.FETCH_DEPARTMENT_SUCCESS,
-//             payload: {departments: resp.data}
-//         })
-//     })
-//     .catch((err)=>{
-//         console.log('err:',err);
-//         dispatch({
-//             type: type.FETCH_DEPARTMENT_FAILED
-//         })
-//     })
-// }
-
 export const getData = (payload) => {
   return {
     type: type.GET_DEPARTMENT,

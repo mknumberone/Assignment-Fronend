@@ -3,7 +3,7 @@ import { Button, Modal } from "antd";
 import React, { useState, useEffect } from "react";
 import "react-phone-number-input/style.css";
 import { useDispatch, useSelector } from "react-redux";
-import { updateEmployee, getEmployee } from "../../../actions/employee";
+import { updateEmployee } from "../../../actions/employee";
 
 // Modals add Admin
 const UpdateEmployee = (props) => {
@@ -15,9 +15,6 @@ const UpdateEmployee = (props) => {
   const oldData = employee?.find((e) => e._id === props.idEmployee);
   const [number, setNumber] = useState(oldData.cellphone);
   const [data, setData] = useState([]);
-  // const [name, setName] = useState(oldData.employeename); //bất kể màn update nào cũng phải sử dụng state thế này, nếu không thife sẽ chỉ hiển thị đc data cũ chứ k update đc
-  // const [email, setEmail] = useState(oldData.email);
-  // const [jobtitle, setJobtitle] = useState(oldData.jobtitle);
   const dispatch = useDispatch();
   const onSubmitData = (e) => {
     e.preventDefault();
@@ -42,21 +39,6 @@ const UpdateEmployee = (props) => {
       data.department,
       "dataTest"
     );
-
-    //  dispatch(
-    //    updateEmployee(
-    //      props.idEmployee,
-    //      data.employeename,
-    //      data.photo,
-    //      data.jobtitle,
-    //      number,
-    //      data.email,
-    //      data._id
-    //    )
-    //  );,e.target.value
-    //  setTimeout(() => {
-    //    dispatch(getEmployee(1, 10, ""));
-    //  }, 500);
   };
 
   const updateHandlerChanged = (e) => {
@@ -87,8 +69,6 @@ const UpdateEmployee = (props) => {
       setData({ ...dataNew });
     }
   }, []);
-
-  // console.log("data", data);
   const showModal = () => {
     setIsModalVisible(true);
   };
@@ -109,188 +89,152 @@ const UpdateEmployee = (props) => {
         onOk={handleCancel}
       >
         <form onSubmit={onSubmitData}>
-          <div>
-            <div>
-              <div>
-                <div
-                  style={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  Name *
-                </div>
-                <div>
-                  <input
-                    style={{
-                      boxShadow: "none",
-                      border: "1px solid #95a5a6",
-                      width: "100%",
-                    }}
-                    type="text"
-                    name="employeename"
-                    className="form-control"
-                    value={data.employeename}
-                    onChange={updateHandlerChanged}
-                  />
-                </div>
-              </div>
-              {/*  */}
-            </div>
 
+
+          <div>
+            <div
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Name *
+            </div>
             <div>
-              <div>
-                <div
-                  style={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  JobTitle *
-                </div>
-                <div>
-                  <input
-                    style={{
-                      boxShadow: "none",
-                      border: "1px solid #95a5a6",
-                      width: "100%",
-                    }}
-                    type="text"
-                    name="jobtitle"
-                    className="form-control"
-                    value={data.jobtitle}
-                    onChange={updateHandlerChanged}
-                  />
-                </div>
-              </div>
+              <input
+                style={{
+                  boxShadow: "none",
+                  border: "1px solid #95a5a6",
+                  width: "100%",
+                }}
+                type="text"
+                name="employeename"
+                className="form-control"
+                value={data.employeename}
+                onChange={updateHandlerChanged}
+              />
             </div>
           </div>
 
           <div>
-            <div>
-              <div>
-                <div
-                  style={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  Email *
-                </div>
-                <div>
-                  <input
-                    style={{
-                      boxShadow: "none",
-                      border: "1px solid #95a5a6",
-                      width: "100%",
-                    }}
-                    type="text"
-                    name="email"
-                    className="form-control"
-                    value={data.email}
-                    onChange={updateHandlerChanged}
-                  />
-                </div>
-              </div>
+            <div
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              JobTitle *
             </div>
-
-            <div className="col-6">
-              <div className="row pb-2">
-                <div
-                  className="col-12 py-2"
-                  style={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  Department *
-                </div>
-                <div className="col-12">
-                  <select
-                    name="department"
-                    className="w-100 form-control focus-remove-shadow"
-                    style={{ boxShadow: "none !important" }}
-                    value={data.department}
-                    onChange={updateHandlerChanged}
-                  >
-                    {allDepartmentList.map((item) => (
-                      <option key={item._id} value={item._id}>
-                        {item.namedepartment}
-                      </option>
-                    ))}
-                  </select>
-                  {/* <select
-                    style={{ boxShadow: "none !important", width: "30%" }}
-                    name="department"
-                    value={data.department}
-                    onChange={updateHandlerChanged}
-                  >
-                    {allDepartmentList.map((item) => (
-                      <option key={item._id} value={item._id}>
-                        {item.namedepartment}
-                      </option>
-                    ))}
-                  </select> */}
-                </div>
-              </div>
+            <div>
+              <input
+                style={{
+                  boxShadow: "none",
+                  border: "1px solid #95a5a6",
+                  width: "100%",
+                }}
+                type="text"
+                name="jobtitle"
+                className="form-control"
+                value={data.jobtitle}
+                onChange={updateHandlerChanged}
+              />
             </div>
           </div>
 
           <div>
-            <div>
-              <div>
-                <div
-                  style={{ color: "rgb(109, 109, 109)", fontWeight: "bold" }}
-                >
-                  CellPhone *
-                </div>
-                <div className="col-12">
-                  {/* <PhoneInput
-                    placeholder="Enter phone number"
-                    name="cellPhone"
-                    value={number}
-                    onChange={setNumber}
-                  /> */}
-                  <input
-                    style={{
-                      boxShadow: "none",
-                      border: "1px solid #95a5a6",
-                      width: "100%",
-                    }}
-                    type="text"
-                    name="number"
-                    className="form-control"
-                    value={number}
-                    onChange={(e) => setNumber(e.target.value)}
-                  />
-                </div>
-              </div>
+            <div
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Email *
             </div>
-
-            <div className="col-6">
-              <div className="row pb-2">
-                <div
-                  className="col-12 py-2"
-                  style={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  Avatar *
-                </div>
-                <div className="col-12">
-                  <input
-                    type="file"
-                    name="updateFileChanged"
-                    value={data.updateFileChanged}
-                    onChange={updateFileChanged}
-                  />
-                </div>
-              </div>
+            <div>
+              <input
+                style={{
+                  boxShadow: "none",
+                  border: "1px solid #95a5a6",
+                  width: "100%",
+                }}
+                type="text"
+                name="email"
+                value={data.email}
+                onChange={updateHandlerChanged}
+              />
             </div>
           </div>
 
-          <div className="py-3 row" style={{ display: "flex" }}>
+          <div >
+            <div
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Department *
+            </div>
+            <div className="col-12">
+              <select
+                name="department"
+                className="w-100 form-control focus-remove-shadow"
+                style={{ boxShadow: "none !important" }}
+                value={data.department}
+                onChange={updateHandlerChanged}
+              >
+                {allDepartmentList.map((item) => (
+                  <option key={item._id} value={item._id}>
+                    {item.namedepartment}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+
+
+          <div>
+            <div
+              style={{ color: "rgb(109, 109, 109)", fontWeight: "bold" }}
+            >
+              CellPhone *
+            </div>
+            <div className="col-12">
+              <input
+                style={{
+                  boxShadow: "none",
+                  border: "1px solid #95a5a6",
+                  width: "100%",
+                }}
+                type="text"
+                name="number"
+                className="form-control"
+                value={number}
+                onChange={(e) => setNumber(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div >
+            <div
+
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Avatar *
+            </div>
+            <div className="col-12">
+              <input
+                type="file"
+                name="updateFileChanged"
+                value={data.updateFileChanged}
+                onChange={updateFileChanged}
+              />
+            </div>
+          </div>
+          <div style={{ display: "flex" }}>
             <div
               className="col-6 "
               style={{

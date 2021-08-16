@@ -16,17 +16,14 @@ import "react-toastify/dist/ReactToastify.css";
 
 var token = getToken();
 if (token) {
-  //  console.log(token);
    const data =jwt.decode(token)
-  const now = new Date().getTime() / 1000;
-  //  console.log('data',data);  
+   const now = new Date().getTime() / 1000;
     if(data.exp > now){
       store.dispatch({
         type: type.LOGGIN_SUCCESS,
         payload: { token, username: data.username }
       })
     }
-  //  window.location="/login"
   }
 
 ReactDOM.render(

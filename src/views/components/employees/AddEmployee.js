@@ -10,8 +10,7 @@ import { addEmployee } from "../../../actions/employee";
 // Modals add Admin
 const AddEmployee = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-    const allDepartmentList = useSelector(state => state.department.allDepartment)
-    console.log(allDepartmentList);
+  const allDepartmentList = useSelector(state => state.department.allDepartment)
   const dispatch = useDispatch();
   const {
     register,
@@ -37,7 +36,7 @@ const AddEmployee = () => {
         data._id
       )
     );
-    console.log(data,'data')
+    console.log(data, 'data')
   };
   return (
     <>
@@ -45,7 +44,7 @@ const AddEmployee = () => {
         <PlusCircleOutlined /> Add New Employee
       </Button>
       <Modal
-        title="Add New Admintrators"
+        title="Add New Employee"
         style={{ alignContent: "center" }}
         visible={isModalVisible}
         onCancel={handleCancel}
@@ -53,31 +52,28 @@ const AddEmployee = () => {
       >
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
-            <div>
-              <div>
-                <div
-                  style={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  Name *
-                </div>
-                <div>
-                  <input
-                    style={{
-                      boxShadow: "none",
-                      border: "1px solid #95a5a6",
-                      width: "100%",
-                    }}
-                    type="text"
-                    name="employeename"
-                    {...register("employeename", { required: true })}
-                  />
-                </div>
-              </div>
+            <div
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Name *
             </div>
             <div>
+              <input
+                style={{
+                  boxShadow: "none",
+                  border: "1px solid #95a5a6",
+                  width: "100%",
+                }}
+                type="text"
+                name="employeename"
+                {...register("employeename", { required: true })}
+              />
+            </div>
+            <div>
+
               <div>
                 <div
                   style={{
@@ -104,91 +100,83 @@ const AddEmployee = () => {
           </div>
 
           <div>
-            <div>
-              <div>
-                <div
-                  style={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  Email *
-                </div>
-                <div className="col-12">
-                  <input
-                    style={{
-                      boxShadow: "none",
-                      border: "1px solid #95a5a6",
-                      width: "100%",
-                    }}
-                    type="text"
-                    name="email"
-                    {...register("email", { required: true })}
-                  />
-                </div>
-              </div>
+            <div
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Email *
             </div>
-            <div>
-              <div>
-                <div
-                  style={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  Department *
-                </div>
-                <div>
-                  <select
-                    {...register("_id", { required: true })}
-                    style={{ boxShadow: "none !important", width: "30%" }}
-                  >
-                    {allDepartmentList.map((item) => (
-                      <option key={item._id} value={item._id}>
-                        {item.namedepartment}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
+            <div className="col-12">
+              <input
+                style={{
+                  boxShadow: "none",
+                  border: "1px solid #95a5a6",
+                  width: "100%",
+                }}
+                type="text"
+                name="email"
+                {...register("email", { required: true })}
+              />
             </div>
           </div>
-          <div>
-            <div>
-              <div>
-                <div>Cellphone *</div>
-                <div>
-                  <PhoneInputWithCountry
-                    placeholder="Enter phone number"
-                    name="cellphone"
-                    control={control}
-                    rules={{ required: true }}
-                  />
-                </div>
-              </div>
-            </div>
 
+          <div>
+            <div
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Department *
+            </div>
             <div>
-              <div>
-                <div
-                  style={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  Avatar *
-                </div>
-                <div>
-                  <input
-                    accept="image/*"
-                    id="contained-button-file"
-                    type="file"
-                    {...register("photo", { required: true })}
-                  />
-                </div>
-              </div>
+              <select
+                {...register("_id", { required: true })}
+                style={{ boxShadow: "none !important", width: "30%" }}
+              >
+                {allDepartmentList.map((item) => (
+                  <option key={item._id} value={item._id}>
+                    {item.namedepartment}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
+
+          <div>
+            <div>Cellphone *</div>
+            <div>
+              <PhoneInputWithCountry
+                placeholder="Enter phone number"
+                name="cellphone"
+                control={control}
+                rules={{ required: true }}
+              />
+            </div>
+          </div>
+
+          <div>
+            <div
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Avatar *
+            </div>
+            <div>
+              <input
+                accept="image/*"
+                id="contained-button-file"
+                type="file"
+                {...register("photo", { required: true })}
+              />
+            </div>
+          </div>
+
+
           <div style={{ display: "flex" }}>
             <div
               style={{

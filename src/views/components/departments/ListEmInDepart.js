@@ -10,13 +10,9 @@ export default function ListEmInDepart(props) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
-  const loadingEmployee = useSelector(
-    (state) => state.department.loadingEmployee
-  );
   const showModal = () => {
     setIsModalVisible(true);
   };
-
   const handleCancel = () => {
     setIsModalVisible(false);
   };

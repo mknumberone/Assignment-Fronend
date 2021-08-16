@@ -52,7 +52,7 @@ class DefaultLayout extends React.Component {
                             })
                         }
                         <Menu.Item key="1"  icon={<ArrowLeftOutlined />}>
-                            <Link to='/login' onClick={()=>localStorage.clear()}>Logout</Link>
+                            <Link to='/login' onClick={()=>localStorage.clear() && window.location.reload()}>Logout</Link>
                         </Menu.Item>
                      
                     </Menu>

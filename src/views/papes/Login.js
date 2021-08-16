@@ -8,8 +8,6 @@ import { Redirect } from "react-router-dom";
 
 const Login = (props) => {
     const onFinish = (values) => {
-        console.log("Success");
-        // Call actions login
         props.login(values)
     };
 

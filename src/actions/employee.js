@@ -52,10 +52,6 @@ export const getEmployee = (data) => {
       employeeApi
         .fetchemployee()
         .then((res) => {
-          console.log(res.data);
-          //  dispatch(totalPage(res.data.meta.totalPages));
-          //  dispatch(getPage(res.data.meta.currentPage));
-          //  dispatch(getPerPage(res.data.meta.itemsPerPage));
           dispatch(getData(res.data));
           dispatch(loadingFail());
         })

@@ -13,9 +13,6 @@ function App() {
             <Login />
           </Route>
           <Route path="/page404">Page not found</Route>
-           {/* <Route path="/">
-             <DefaultLayout/>
-           </Route> */}
            <PrivateRoute>
               <DefaultLayout />
            </PrivateRoute>
